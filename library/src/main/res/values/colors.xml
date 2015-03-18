@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="date_item_unselected_indicator">#FFFFEE9E</color>
+    <color name="date_item_selected_indicator">#FFEF7C2B</color>
+
+</resources>
