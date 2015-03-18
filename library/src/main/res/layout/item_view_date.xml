@@ -40,6 +40,6 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/date_unselected_indicator"/>
+        android:background="@color/date_item_unselected_indicator"/>
 
 </RelativeLayout>
