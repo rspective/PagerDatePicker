@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="DateRecyclerViewWidget">
+        <attr name="date_start" format="string"/>
+        <attr name="date_end" format="string"/>
+    </declare-styleable>
+
+</resources>
