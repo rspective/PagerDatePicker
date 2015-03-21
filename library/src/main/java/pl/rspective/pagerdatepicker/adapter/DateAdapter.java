@@ -40,8 +40,9 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateItemHolder
     }
 
     public void setSelectedDate(int position) {
+        notifyItemChanged(getPosition(selectedDate));
         selectedDate = dateItems.get(position).getDate().getTime();
-        notifyDataSetChanged();
+        notifyItemChanged(position);
     }
 
     @Override
@@ -81,12 +82,17 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateItemHolder
         return dateItems.get(position);
     }
 
+    public int getPosition(long dateInMiliseconds) {
+        DateItem dateItem = new DateItem(new Date(dateInMiliseconds));
+        return dateItems.indexOf(dateItem);
+    }
+
     private void onDateItemHolderClick(DateItemHolder itemHolder) {
         if (onItemClickListener != null) {
             onItemClickListener.onDateItemClick(getItem(itemHolder.getPosition()), itemHolder.getPosition());
         }
 
-        if (selectedDate != -1) {
+        if (selectedDate != -1 && selectedDateView != null) {
             selectedDateView.changeDateIndicatorColor(false);
             selectedDateView.changeTextColor(false);
 

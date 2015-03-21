@@ -12,4 +12,15 @@ public class DateItem {
     public Date getDate() {
         return date;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        DateItem item = (DateItem) o;
+        return this.date.getTime() == item.getDate().getTime();
+    }
+
+    @Override
+    public int hashCode() {
+        return Long.valueOf(date.getTime()).hashCode();
+    }
 }
