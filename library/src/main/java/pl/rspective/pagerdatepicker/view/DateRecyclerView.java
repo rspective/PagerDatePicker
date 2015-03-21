@@ -1,11 +1,32 @@
 package pl.rspective.pagerdatepicker.view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.support.annotation.NonNull;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
+
+import java.text.ParseException;
+import java.util.Date;
+
+import pl.rspective.pagerdatepicker.PagerDatePickerDateFormat;
+import pl.rspective.pagerdatepicker.R;
+import pl.rspective.pagerdatepicker.adapter.DateAdapter;
+import pl.rspective.pagerdatepicker.model.DateItem;
 
 public class DateRecyclerView extends RecyclerView {
+
+    public static interface DateRecyclerViewListener extends ViewPager.OnPageChangeListener {
+        void onDateItemClick(DateItem dateItem, int position);
+    }
+
+    private static final String TAG = "DateRecyclerView";
+
+    private DateAdapter dateAdapter;
+    private ViewPager pager;
 
     public DateRecyclerView(Context context) {
         this(context, null);
@@ -17,6 +38,26 @@ public class DateRecyclerView extends RecyclerView {
 
     public DateRecyclerView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+
+        initWidget(context, attrs);
+    }
+
+    private void initWidget(Context context, AttributeSet attrs) {
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.DateRecyclerViewWidget);
+
+        String dateStart = typedArray.getString(R.styleable.DateRecyclerViewWidget_date_start);
+        String dateEnd = typedArray.getString(R.styleable.DateRecyclerViewWidget_date_end);
+
+        try {
+            Date start = PagerDatePickerDateFormat.DATE_PICKER_DD_MM_YYYY_FORMAT.parse(dateStart);
+            Date end = PagerDatePickerDateFormat.DATE_PICKER_DD_MM_YYYY_FORMAT.parse(dateEnd);
+            dateAdapter = new DateAdapter(start, end);
+        } catch (ParseException e) {
+            Log.e(TAG, "The start/end date is incorrect", e);
+        }
+
+        setAdapter(dateAdapter);
+
     }
 
     @Override
@@ -32,4 +73,23 @@ public class DateRecyclerView extends RecyclerView {
 
         super.setLayoutManager(layout);
     }
+
+    @Override
+    public Adapter getAdapter() {
+        return dateAdapter;
+    }
+
+    public void setPager(ViewPager pager) {
+        this.pager = pager;
+    }
+
+    public void setDateRecyclerViewListener(DateRecyclerViewListener listener) {
+        dateAdapter.setOnDateItemClickClistener(listener);
+        pager.setOnPageChangeListener(listener);
+    }
+
+    public @NonNull DateAdapter getDateAdapter() {
+        return dateAdapter;
+    }
+
 }
