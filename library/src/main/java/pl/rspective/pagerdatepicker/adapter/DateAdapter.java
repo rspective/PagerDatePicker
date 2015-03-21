@@ -1,12 +1,10 @@
 package pl.rspective.pagerdatepicker.adapter;
 
 import android.content.res.Resources;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,37 +16,32 @@ import pl.rspective.pagerdatepicker.PagerDatePickerDateFormat;
 import pl.rspective.pagerdatepicker.R;
 import pl.rspective.pagerdatepicker.model.DateItem;
 import pl.rspective.pagerdatepicker.utils.DateUtils;
+import pl.rspective.pagerdatepicker.view.DateRecyclerView;
 
 public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateItemHolder> {
 
     private List<DateItem> dateItems;
-    private AdapterView.OnItemClickListener onItemClickListener;
-
-    private ViewPager pager;
+    private DateRecyclerView.DateRecyclerViewListener onItemClickListener;
 
     private long selectedDate = -1;
     private DateItemHolder selectedDateView = null;
 
     public DateAdapter(Date start, Date end) {
         if (start.getTime() > end.getTime()) {
-            throw new IllegalArgumentException("Wrong dates");
+            throw new IllegalArgumentException("Wrong dates : StartDate > EndDate");
         }
 
         this.dateItems = new ArrayList<>();
         this.dateItems.addAll(DateUtils.getDaysBetweenStartAndEnd(start, end));
     }
 
-    public void setOnDateItemClickClistener(AdapterView.OnItemClickListener onItemClickListener) {
+    public void setOnDateItemClickClistener(DateRecyclerView.DateRecyclerViewListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
 
     public void setSelectedDate(int position) {
         selectedDate = dateItems.get(position).getDate().getTime();
         notifyDataSetChanged();
-    }
-
-    public void setPager(ViewPager pager) {
-        this.pager = pager;
     }
 
     @Override
@@ -90,7 +83,7 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateItemHolder
 
     private void onDateItemHolderClick(DateItemHolder itemHolder) {
         if (onItemClickListener != null) {
-            onItemClickListener.onItemClick(null, itemHolder.itemView, itemHolder.getPosition(), itemHolder.getItemId());
+            onItemClickListener.onDateItemClick(getItem(itemHolder.getPosition()), itemHolder.getPosition());
         }
 
         if (selectedDate != -1) {
