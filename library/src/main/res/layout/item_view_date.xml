@@ -3,8 +3,9 @@
     android:id="@+id/rl_date_picker_item"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="80dp"
     android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:minWidth="80dp"
     android:background="@color/date_item_background"
     android:orientation="vertical">
 
