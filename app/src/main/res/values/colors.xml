@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="date_item_background">#ff5c5c5c</color>
+    <color name="date_item_month_name">#ff8b8b8b</color>
+    <color name="date_item_day_name">#fffdfdfd</color>
+
+</resources>

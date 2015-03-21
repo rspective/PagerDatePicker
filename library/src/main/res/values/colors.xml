@@ -4,4 +4,9 @@
     <color name="date_item_unselected_indicator">#FFFFEE9E</color>
     <color name="date_item_selected_indicator">#FFEF7C2B</color>
 
+    <color name="date_item_background">#ff373737</color>
+    <color name="date_item_month_name">#ffd5d5d5</color>
+    <color name="date_item_day_name">#ff9a9a9a</color>
+    <color name="date_item_day">#FFFFFFFF</color>
+
 </resources>
