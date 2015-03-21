@@ -45,8 +45,20 @@ public class DateRecyclerView extends RecyclerView {
     private void initWidget(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.DateRecyclerViewWidget);
 
+        setDateRange(typedArray);
+
+        if(dateAdapter != null) {
+            setAdapter(dateAdapter);
+        }
+    }
+
+    private void setDateRange(TypedArray typedArray) {
         String dateStart = typedArray.getString(R.styleable.DateRecyclerViewWidget_date_start);
         String dateEnd = typedArray.getString(R.styleable.DateRecyclerViewWidget_date_end);
+
+        if(dateStart == null || dateEnd == null) {
+            return;
+        }
 
         try {
             Date start = PagerDatePickerDateFormat.DATE_PICKER_DD_MM_YYYY_FORMAT.parse(dateStart);
@@ -55,9 +67,6 @@ public class DateRecyclerView extends RecyclerView {
         } catch (ParseException e) {
             Log.e(TAG, "The start/end date is incorrect", e);
         }
-
-        setAdapter(dateAdapter);
-
     }
 
     @Override
@@ -77,6 +86,16 @@ public class DateRecyclerView extends RecyclerView {
     @Override
     public Adapter getAdapter() {
         return dateAdapter;
+    }
+
+    @Override
+    public void setAdapter(Adapter adapter) {
+        if(!(adapter instanceof DateAdapter)) {
+            throw new IllegalArgumentException("Your adapter has to be a DateAdapter type");
+        }
+
+        dateAdapter = (DateAdapter) adapter;
+        super.setAdapter(dateAdapter);
     }
 
     public void setPager(ViewPager pager) {
