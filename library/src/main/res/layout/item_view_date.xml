@@ -3,10 +3,9 @@
     android:id="@+id/rl_date_picker_item"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/date_card_width"
     android:layout_height="match_parent"
-    android:layout_width="wrap_content"
-    android:minWidth="80dp"
-    android:background="@color/date_item_background"
+    android:background="@android:color/black"
     android:orientation="vertical">
 
     <TextView
@@ -38,8 +37,8 @@
 
     <View
         android:id="@+id/view_date_indicator"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
         android:layout_alignParentBottom="true"
         android:background="@color/date_item_unselected_indicator"/>
 
