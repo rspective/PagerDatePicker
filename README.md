@@ -1,2 +1,4 @@
-# PagerDatePicker
-PagerDatePicker for Android
+#PagerDatePicker
+============
+
+###Version: 0.0.1
