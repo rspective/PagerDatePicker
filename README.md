@@ -22,7 +22,7 @@ TODO
 
 
 ###Screenshot
-TODO
+![image](art/pager_date_picker_sample_0.gif)
 
 
 ###Quick Setup（Basic Usage
