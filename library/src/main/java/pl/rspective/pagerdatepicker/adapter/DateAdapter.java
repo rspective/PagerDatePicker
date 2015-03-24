@@ -111,20 +111,18 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateItemHolder
         if (selectedDate != -1 && selectedDateView != null) {
             selectedDateView.changeDateIndicatorColor(false);
             selectedDateView.changeTextColor(false);
-
-            selectedDateView = itemHolder;
-            selectedDateView.changeDateIndicatorColor(true);
-            selectedDateView.changeTextColor(true);
-
-            selectedDate = dateItems.get(itemHolder.getPosition()).getDate().getTime();
-        } else {
-            selectedDate = dateItems.get(itemHolder.getPosition()).getDate().getTime();
-            selectedDateView = itemHolder;
-
-            selectedDateView.changeDateIndicatorColor(true);
-            selectedDateView.changeTextColor(true);
         }
 
+        selectedDateView = itemHolder;
+        selectedDate = dateItems.get(itemHolder.getPosition()).getDate().getTime();
+
+        updateSelectedDateCard();
+
+    }
+
+    private void updateSelectedDateCard() {
+        selectedDateView.changeDateIndicatorColor(true);
+        selectedDateView.changeTextColor(true);
     }
 
     static class DateItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
