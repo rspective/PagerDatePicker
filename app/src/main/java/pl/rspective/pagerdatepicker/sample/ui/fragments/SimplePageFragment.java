@@ -14,7 +14,7 @@ import pl.rspective.pagerdatepicker.sample.R;
 
 public class SimplePageFragment extends Fragment {
 
-    private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("dd MM yyyy");
+    private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("MMMM dd, yyyy");
 
     private static final String DATE_PICKER_DATE_KEY = "date_picker_date_key";
     private static final String DATE_PICKER_POSITION_KEY = "date_picker_position_key";

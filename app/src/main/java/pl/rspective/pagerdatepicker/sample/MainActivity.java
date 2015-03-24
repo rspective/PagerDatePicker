@@ -7,6 +7,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.util.Date;
+
+import pl.rspective.pagerdatepicker.PagerDatePickerDateFormat;
+import pl.rspective.pagerdatepicker.adapter.DateAdapter;
 import pl.rspective.pagerdatepicker.adapter.DatePagerFragmentAdapter;
 import pl.rspective.pagerdatepicker.model.DateItem;
 import pl.rspective.pagerdatepicker.sample.ui.fragments.SimplePageFragment;
@@ -32,6 +37,17 @@ public class MainActivity extends ActionBarActivity {
         dateList.setLayoutManager(layoutManager);
         dateList.addItemDecoration(new RecyclerViewInsetDecoration(this));
 
+        Date start = null;
+        Date end = null;
+
+        try {
+            start = PagerDatePickerDateFormat.DATE_PICKER_DD_MM_YYYY_FORMAT.parse("02-12-2000");
+            end = PagerDatePickerDateFormat.DATE_PICKER_DD_MM_YYYY_FORMAT.parse("02-12-2020");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        dateList.setAdapter(new DateAdapter(start, end));
         dateList.setPager(pager);
 
         dateList.setDateRecyclerViewListener(new DateRecyclerView.DateRecyclerViewListener() {
