@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.widget.Toast;
 
 import java.text.ParseException;
@@ -32,9 +31,6 @@ public class MainActivity extends ActionBarActivity {
         pager = (ViewPager) findViewById(R.id.pager);
         dateList = (DateRecyclerView) findViewById(R.id.date_list);
 
-        final LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-
-        dateList.setLayoutManager(layoutManager);
         dateList.addItemDecoration(new RecyclerViewInsetDecoration(this));
 
         Date start = null;

@@ -66,6 +66,9 @@ public class DateRecyclerView extends RecyclerView {
         if(dateAdapter != null) {
             setAdapter(dateAdapter);
         }
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
+        setLayoutManager(layoutManager);
     }
 
     private void setDateRange(TypedArray typedArray) {
