@@ -18,8 +18,11 @@ Notice that PagerDatePicker is a project under development.
 
 
 ###Features
-TODO
-
+####XML attributes:
+```xml
+    <attr name="date_start" format="string"/>
+    <attr name="date_end" format="string"/>
+```
 
 ###Screenshot
 ![image](art/pager_date_picker_sample_0.gif)
