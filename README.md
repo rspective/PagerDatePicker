@@ -31,8 +31,78 @@ TODO
 TODO
 
 #####2.Usage
-TODO
+######1. Add picker and pager to your view
+```xml
+    <pl.rspective.pagerdatepicker.view.DateRecyclerView
+        android:id="@+id/date_list"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#ff343434"/>
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/date_list"/>
+```
+
+######2. Add item decoration for your picker (OPTIONAL)
+
+You can do this in two ways:
+```java
+    dateList.addItemDecoration(new RecyclerViewInsetDecoration(this);
+```
+Default insets is 1dp
+
+```java
+    dateList.addItemDecoration(new RecyclerViewInsetDecoration(this, R.dimen.date_card_insets));
+```
+Add your own insets value
+
+######3. Create adapter with date range and assign it to our picker
+
+```java
+    dateList.setAdapter(new DateAdapter(start, end));
+```
+
+######4. Init pager adapter and assign it to our datepicker
+
+```java
+       DatePagerFragmentAdapter fragmentAdapter = new DatePagerFragmentAdapter(getSupportFragmentManager(), dateList.getDateAdapter()) {
+            @Override
+            protected Fragment getFragment(int position, long date) {
+                return ...
+            }
+        };
+
+        pager.setAdapter(fragmentAdapter);
+        dateList.setPager(pager);
+```
+
+######5. We are almost there. Now you have to assign a listener to your picker
+```java
+      dateList.setDatePickerListener(new DateRecyclerView.DatePickerListener() {
+            @Override
+            public void onDatePickerItemClick(DateItem dateItem, int position) {
+                //User clicked date item from top date picker
+            }
+
+            @Override
+            public void onDatePickerPageSelected(int position) {
+                //User changed date using swipe (left/right)
+            }
+
+            @Override
+            public void onDatePickerPageStateChanged(int state) {
+                //User changed page
+            }
+
+            @Override
+            public void onDatePickerPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                //User changed page
+            }
+        });
+```
 
 ####If you want to see more details, go ahead and check the demo!
 
