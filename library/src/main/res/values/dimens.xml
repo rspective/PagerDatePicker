@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="date_card_insets">1dp</dimen>
+    <dimen name="date_card_insets_default">1dp</dimen>
 
     <dimen name="date_card_width">80dp</dimen>
 

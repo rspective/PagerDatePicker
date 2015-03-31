@@ -18,6 +18,7 @@ package pl.rspective.pagerdatepicker.view;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.support.annotation.DimenRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -28,7 +29,11 @@ public class RecyclerViewInsetDecoration extends RecyclerView.ItemDecoration {
     private int insets;
 
     public RecyclerViewInsetDecoration(Context context) {
-        insets = context.getResources().getDimensionPixelSize(R.dimen.date_card_insets);
+        insets = context.getResources().getDimensionPixelSize(R.dimen.date_card_insets_default);
+    }
+
+    public RecyclerViewInsetDecoration(Context context, @DimenRes int insetsResId) {
+        insets = context.getResources().getDimensionPixelSize(insetsResId);
     }
 
     @Override

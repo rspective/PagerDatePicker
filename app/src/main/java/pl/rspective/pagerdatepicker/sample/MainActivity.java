@@ -31,7 +31,7 @@ public class MainActivity extends ActionBarActivity {
         pager = (ViewPager) findViewById(R.id.pager);
         dateList = (DateRecyclerView) findViewById(R.id.date_list);
 
-        dateList.addItemDecoration(new RecyclerViewInsetDecoration(this));
+        dateList.addItemDecoration(new RecyclerViewInsetDecoration(this, R.dimen.date_card_insets));
 
         Date start = null;
         Date end = null;
@@ -44,7 +44,17 @@ public class MainActivity extends ActionBarActivity {
         }
 
         dateList.setAdapter(new DateAdapter(start, end));
+
+        DatePagerFragmentAdapter fragmentAdapter = new DatePagerFragmentAdapter(getSupportFragmentManager(), dateList.getDateAdapter()) {
+            @Override
+            protected Fragment getFragment(int position, long date) {
+                return SimplePageFragment.newInstance(position, date);
+            }
+        };
+
+        pager.setAdapter(fragmentAdapter);
         dateList.setPager(pager);
+
         dateList.setDatePickerListener(new DateRecyclerView.DatePickerListener() {
             @Override
             public void onDatePickerItemClick(DateItem dateItem, int position) {
@@ -66,15 +76,6 @@ public class MainActivity extends ActionBarActivity {
 
             }
         });
-
-        DatePagerFragmentAdapter fragmentAdapter = new DatePagerFragmentAdapter(getSupportFragmentManager(), dateList.getDateAdapter()) {
-            @Override
-            protected Fragment getFragment(int position, long date) {
-                return SimplePageFragment.newInstance(position, date);
-            }
-        };
-
-        pager.setAdapter(fragmentAdapter);
 
     }
 
