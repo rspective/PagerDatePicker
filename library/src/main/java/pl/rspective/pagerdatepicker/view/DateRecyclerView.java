@@ -33,15 +33,22 @@ import pl.rspective.pagerdatepicker.R;
 import pl.rspective.pagerdatepicker.adapter.DateAdapter;
 import pl.rspective.pagerdatepicker.model.DateItem;
 
-public class DateRecyclerView extends RecyclerView {
+public class DateRecyclerView extends RecyclerView implements ViewPager.OnPageChangeListener, DateAdapter.DateItemListener {
 
-    public static interface DateRecyclerViewListener extends ViewPager.OnPageChangeListener {
-        void onDateItemClick(DateItem dateItem, int position);
+    public static interface DatePickerListener {
+        void onDatePickerItemClick(DateItem dateItem, int position);
+
+        void onDatePickerPageSelected(int position);
+
+        void onDatePickerPageStateChanged(int state);
+
+        void onDatePickerPageScrolled(int position, float positionOffset, int positionOffsetPixels);
     }
 
     private static final String TAG = "DateRecyclerView";
 
     private DateAdapter dateAdapter;
+    private DatePickerListener datePickerListener;
     private ViewPager pager;
 
     public DateRecyclerView(Context context) {
@@ -114,20 +121,54 @@ public class DateRecyclerView extends RecyclerView {
         }
 
         dateAdapter = (DateAdapter) adapter;
+        dateAdapter.setOnDateItemClickClistener(this);
         super.setAdapter(dateAdapter);
+    }
+
+    public void setDatePickerListener(DatePickerListener datePickerListener) {
+        this.datePickerListener = datePickerListener;
     }
 
     public void setPager(ViewPager pager) {
         this.pager = pager;
-    }
-
-    public void setDateRecyclerViewListener(DateRecyclerViewListener listener) {
-        dateAdapter.setOnDateItemClickClistener(listener);
-        pager.setOnPageChangeListener(listener);
+        this.pager.setOnPageChangeListener(this);
     }
 
     public @NonNull DateAdapter getDateAdapter() {
         return dateAdapter;
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        if(datePickerListener != null) {
+            datePickerListener.onDatePickerPageScrolled(position, positionOffset, positionOffsetPixels);
+        }
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        smoothScrollToPosition(position);
+        getDateAdapter().setSelectedDate(position);
+
+        if(datePickerListener != null) {
+            datePickerListener.onDatePickerPageSelected(position);
+        }
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+        if(datePickerListener != null) {
+            datePickerListener.onDatePickerPageStateChanged(state);
+        }
+    }
+
+    @Override
+    public void onDateItemClick(DateItem dateItem, int position) {
+        pager.setCurrentItem(position, true);
+
+        if(datePickerListener != null) {
+            datePickerListener.onDatePickerItemClick(dateItem, position);
+        }
     }
 
 }

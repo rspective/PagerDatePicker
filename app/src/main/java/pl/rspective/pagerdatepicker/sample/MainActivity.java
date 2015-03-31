@@ -45,29 +45,27 @@ public class MainActivity extends ActionBarActivity {
 
         dateList.setAdapter(new DateAdapter(start, end));
         dateList.setPager(pager);
-
-        dateList.setDateRecyclerViewListener(new DateRecyclerView.DateRecyclerViewListener() {
+        dateList.setDatePickerListener(new DateRecyclerView.DatePickerListener() {
             @Override
-            public void onDateItemClick(DateItem dateItem, int position) {
+            public void onDatePickerItemClick(DateItem dateItem, int position) {
                 Toast.makeText(MainActivity.this, "Clicked: " + position, Toast.LENGTH_SHORT).show();
-                pager.setCurrentItem(position, true);
             }
 
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            public void onDatePickerPageSelected(int position) {
+
             }
 
             @Override
-            public void onPageSelected(int position) {
-                dateList.smoothScrollToPosition(position);
-                dateList.getDateAdapter().setSelectedDate(position);
+            public void onDatePickerPageStateChanged(int state) {
+
             }
 
             @Override
-            public void onPageScrollStateChanged(int state) {
+            public void onDatePickerPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
             }
         });
-
 
         DatePagerFragmentAdapter fragmentAdapter = new DatePagerFragmentAdapter(getSupportFragmentManager(), dateList.getDateAdapter()) {
             @Override

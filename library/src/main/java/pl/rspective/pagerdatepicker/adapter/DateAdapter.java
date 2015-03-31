@@ -32,12 +32,15 @@ import pl.rspective.pagerdatepicker.PagerDatePickerDateFormat;
 import pl.rspective.pagerdatepicker.R;
 import pl.rspective.pagerdatepicker.model.DateItem;
 import pl.rspective.pagerdatepicker.utils.DateUtils;
-import pl.rspective.pagerdatepicker.view.DateRecyclerView;
 
 public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateItemHolder> {
 
+    public static interface DateItemListener {
+        void onDateItemClick(DateItem dateItem, int position);
+    }
+
     private List<DateItem> dateItems;
-    private DateRecyclerView.DateRecyclerViewListener onItemClickListener;
+    private DateItemListener onDateItemListener;
 
     private long selectedDate = -1;
     private DateItemHolder selectedDateView = null;
@@ -51,8 +54,8 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateItemHolder
         this.dateItems.addAll(DateUtils.getDaysBetweenStartAndEnd(start, end));
     }
 
-    public void setOnDateItemClickClistener(DateRecyclerView.DateRecyclerViewListener onItemClickListener) {
-        this.onItemClickListener = onItemClickListener;
+    public void setOnDateItemClickClistener(DateItemListener onDateItemListener) {
+        this.onDateItemListener = onDateItemListener;
     }
 
     public void setSelectedDate(int position) {
@@ -104,8 +107,8 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateItemHolder
     }
 
     private void onDateItemHolderClick(DateItemHolder itemHolder) {
-        if (onItemClickListener != null) {
-            onItemClickListener.onDateItemClick(getItem(itemHolder.getPosition()), itemHolder.getPosition());
+        if (onDateItemListener != null) {
+            onDateItemListener.onDateItemClick(getItem(itemHolder.getPosition()), itemHolder.getPosition());
         }
 
         if (selectedDate != -1 && selectedDateView != null) {
