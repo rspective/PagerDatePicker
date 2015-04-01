@@ -28,7 +28,7 @@ Support date format MM-dd-yyyy
 ```
 
 ###Screenshot
-![image](art/pager_date_picker_sample_0.gif)
+![image](art/app_0.0.1.gif)
 
 
 ###Quick Setup（Basic Usage
