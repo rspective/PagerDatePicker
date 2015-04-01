@@ -12,6 +12,15 @@
         android:layout_height="100dp"
         android:background="#ff343434"/>
 
+    <!--<pl.rspective.pagerdatepicker.view.DateRecyclerView-->
+        <!--android:id="@+id/date_list"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:background="#ff343434"-->
+        <!--datepicker:date_start="02-12-2000"-->
+        <!--datepicker:date_end="01-10-2020"-->
+        <!--datepicker:default_day_selection="10-06-2015"/>-->
+
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"

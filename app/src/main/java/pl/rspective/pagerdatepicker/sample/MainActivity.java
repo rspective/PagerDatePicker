@@ -35,15 +35,19 @@ public class MainActivity extends ActionBarActivity {
 
         Date start = null;
         Date end = null;
+        Date defaultDate = null;
 
         try {
             start = PagerDatePickerDateFormat.DATE_PICKER_DD_MM_YYYY_FORMAT.parse("02-12-2000");
             end = PagerDatePickerDateFormat.DATE_PICKER_DD_MM_YYYY_FORMAT.parse("02-12-2020");
+
+            defaultDate = PagerDatePickerDateFormat.DATE_PICKER_DD_MM_YYYY_FORMAT.parse("01-04-2015");
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        dateList.setAdapter(new DateAdapter(start, end));
+        dateList.setAdapter(new DateAdapter(start, end, defaultDate));
 
         DatePagerFragmentAdapter fragmentAdapter = new DatePagerFragmentAdapter(getSupportFragmentManager(), dateList.getDateAdapter()) {
             @Override
