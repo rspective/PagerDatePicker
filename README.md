@@ -13,15 +13,18 @@ PagerDatePicker is a library for Android which allows to setup horizontal (for n
 
 Notice that PagerDatePicker is a project under development.
 
-
 ####Welcome to fork and pull request.
 
 
 ###Features
+
 ####XML attributes:
+Support date format MM-dd-yyyy
+
 ```xml
     <attr name="date_start" format="string"/>
     <attr name="date_end" format="string"/>
+    <attr name="default_day_selection" format="string"/>
 ```
 
 ###Screenshot
@@ -34,6 +37,8 @@ Notice that PagerDatePicker is a project under development.
 TODO
 
 #####2.Usage
+Please note, that supported date format is MM-dd-yyyy
+
 ######1. Add picker and pager to your view
 ```xml
 <pl.rspective.pagerdatepicker.view.DateRecyclerView
