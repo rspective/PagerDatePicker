@@ -4,6 +4,7 @@
     <declare-styleable name="DateRecyclerViewWidget">
         <attr name="date_start" format="string"/>
         <attr name="date_end" format="string"/>
+        <attr name="default_day_selection" format="string"/>
     </declare-styleable>
 
 </resources>

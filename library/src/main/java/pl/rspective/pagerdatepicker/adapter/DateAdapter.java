@@ -46,22 +46,24 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateItemHolder
     private DateItemHolder selectedDateView = null;
 
     public DateAdapter(Date start, Date end) {
+        this(start, end, null);
+    }
+
+    public DateAdapter(Date start, Date end, Date defaultDate) {
         if (start.getTime() > end.getTime()) {
             throw new IllegalArgumentException("Wrong dates : StartDate > EndDate");
         }
 
         this.dateItems = new ArrayList<>();
         this.dateItems.addAll(DateUtils.getDaysBetweenStartAndEnd(start, end));
+
+        if(defaultDate != null && ((defaultDate.getTime() <= end.getTime() && defaultDate.getTime() >= start.getTime() ))) {
+            setSelectedDate(getPosition(defaultDate.getTime()));
+        }
     }
 
     public void setOnDateItemClickClistener(DateItemListener onDateItemListener) {
         this.onDateItemListener = onDateItemListener;
-    }
-
-    public void setSelectedDate(int position) {
-        notifyItemChanged(getPosition(selectedDate));
-        selectedDate = dateItems.get(position).getDate().getTime();
-        notifyItemChanged(position);
     }
 
     @Override
@@ -101,9 +103,19 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateItemHolder
         return dateItems.get(position);
     }
 
+    public void setSelectedDate(int position) {
+        notifyItemChanged(getPosition(selectedDate));
+        selectedDate = dateItems.get(position).getDate().getTime();
+        notifyItemChanged(position);
+    }
+
     public int getPosition(long dateInMiliseconds) {
         DateItem dateItem = new DateItem(new Date(dateInMiliseconds));
         return dateItems.indexOf(dateItem);
+    }
+
+    public int getCurrentPosition() {
+        return getPosition(selectedDate);
     }
 
     private void onDateItemHolderClick(DateItemHolder itemHolder) {
