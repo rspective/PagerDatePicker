@@ -7,8 +7,11 @@
 
     <color name="toolbar_background">#fffdfdfd</color>
 
+    <color name="date_custom_item_unselected_indicator">#ff5c5c5c</color>
+    <color name="date_custom_item_selected_indicator">#ffff7709</color>
+
     <color name="date_item_unselected_indicator">#ff5c5c5c</color>
-    <color name="date_item_selected_indicator">#ffff7709</color>
+    <color name="date_item_selected_indicator">#ffff353b</color>
 
     <color name="date_item_background">#ff5c5c5c</color>
     <color name="date_item_month_name">#fffcfcfc</color>

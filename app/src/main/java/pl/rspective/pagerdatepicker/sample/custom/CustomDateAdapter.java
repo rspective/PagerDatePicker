@@ -92,7 +92,7 @@ public class CustomDateAdapter extends AbsDateAdapter<CustomDateAdapter.CustomDa
         @Override
         public void changeTextColor(boolean isSelected) {
             if (isSelected) {
-                tvDay.setTextColor(resources.getColor(R.color.date_item_selected_indicator));
+                tvDay.setTextColor(resources.getColor(R.color.date_custom_item_selected_indicator));
                 tvDayName.setTextColor(resources.getColor(R.color.date_custom_item_day_name));
                 tvMonth.setTextColor(resources.getColor(R.color.date_custom_item_month_name));
             } else {
