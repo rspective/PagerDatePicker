@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/view_date_indicator"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/date_card_width"
+    android:layout_height="match_parent"
+    android:background="@color/date_item_unselected_indicator"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="1dp"
+        android:background="@color/date_custom_item_background">
+
+        <TextView
+            android:id="@+id/tv_date_picker_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/date_custom_item_day"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            tools:text="12"/>
+
+        <TextView
+            android:id="@+id/tv_date_picker_day_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tv_date_picker_day"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/date_item_day_name"
+            tools:text="Monday"/>
+
+        <TextView
+            android:id="@+id/tv_date_picker_month_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_date_picker_day"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/date_item_month_name"
+            tools:text="January"/>
+
+    </RelativeLayout>
+</RelativeLayout>
