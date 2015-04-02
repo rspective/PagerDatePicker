@@ -39,8 +39,12 @@ To check details, please see demo app.
 ###Screenshot
 ![image](art/app_1.0.0.gif)
 
+<a href="https://play.google.com/store/apps/details?id=pl.rspective.pagerdatepicker.sample">
+  <img alt="Get it on Google Play"
+       src="https://developer.android.com/images/brand/pl_generic_rgb_wo_60.png" />
+</a>
 
-###Quick Setup（Basic Usage
+###Quick Setup（Basic Usage)
 
 #####1.Integration
 We are going to release into maven central repository.
@@ -119,6 +123,17 @@ dateList.setDatePickerListener(new DateRecyclerView.DatePickerListener() {
         //User changed page
     }
 });
+```
+
+If you want to change the default color, just override below colors in your colors.xml:
+```xml
+<color name="date_item_unselected_indicator">#ff5c5c5c</color>
+<color name="date_item_selected_indicator">#ffff353b</color>
+
+<color name="date_item_background">#ff373737</color>
+<color name="date_item_month_name">#ffd5d5d5</color>
+<color name="date_item_day_name">#ff9a9a9a</color>
+<color name="date_item_day">#FFFFFFFF</color>
 ```
 
 ####If you want to see more details, go ahead and check the demo!
