@@ -32,7 +32,7 @@ public abstract class AbsDateAdapter<T extends AbsDateItemHolder> extends Recycl
     }
 
     protected List<DateItem> dateItems;
-    protected DateAdapter.DateItemListener onDateItemListener;
+    protected DefaultDateAdapter.DateItemListener onDateItemListener;
 
     protected long selectedDate = -1;
     protected T selectedDateView = null;

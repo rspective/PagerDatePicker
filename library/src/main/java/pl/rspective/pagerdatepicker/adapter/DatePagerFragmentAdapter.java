@@ -24,22 +24,22 @@ import pl.rspective.pagerdatepicker.model.DateItem;
 
 public abstract class DatePagerFragmentAdapter<T extends Fragment> extends FragmentStatePagerAdapter {
 
-    private DateAdapter dateAdapter;
+    private AbsDateAdapter defaultDateAdapter;
 
-    public DatePagerFragmentAdapter(FragmentManager fm, DateAdapter dateAdapter) {
+    public DatePagerFragmentAdapter(FragmentManager fm, AbsDateAdapter defaultDateAdapter) {
         super(fm);
-        this.dateAdapter = dateAdapter;
+        this.defaultDateAdapter = defaultDateAdapter;
     }
 
     @Override
     public Fragment getItem(int position) {
-        DateItem dateItem = dateAdapter.getItem(position);
+        DateItem dateItem = defaultDateAdapter.getItem(position);
         return getFragment(position, dateItem.getDate().getTime());
     }
 
     @Override
     public int getCount() {
-        return dateAdapter.getItemCount();
+        return defaultDateAdapter.getItemCount();
     }
 
     protected abstract T getFragment(int position, long date);

@@ -29,13 +29,13 @@ import pl.rspective.pagerdatepicker.PagerDatePickerDateFormat;
 import pl.rspective.pagerdatepicker.R;
 import pl.rspective.pagerdatepicker.model.DateItem;
 
-public class DateAdapter extends AbsDateAdapter<DateAdapter.DateItemHolder> {
+public class DefaultDateAdapter extends AbsDateAdapter<DefaultDateAdapter.DateItemHolder> {
 
-    public DateAdapter(Date start, Date end) {
+    public DefaultDateAdapter(Date start, Date end) {
         this(start, end, null);
     }
 
-    public DateAdapter(Date start, Date end, Date defaultDate) {
+    public DefaultDateAdapter(Date start, Date end, Date defaultDate) {
         super(start, end, defaultDate);
     }
 
@@ -100,7 +100,7 @@ public class DateAdapter extends AbsDateAdapter<DateAdapter.DateItemHolder> {
 
         Resources resources;
 
-        public DateItemHolder(View itemView, DateAdapter adapter) {
+        public DateItemHolder(View itemView, DefaultDateAdapter adapter) {
             super(itemView, adapter);
 
             this.resources = itemView.getResources();

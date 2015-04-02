@@ -30,10 +30,11 @@ import java.util.Date;
 
 import pl.rspective.pagerdatepicker.PagerDatePickerDateFormat;
 import pl.rspective.pagerdatepicker.R;
-import pl.rspective.pagerdatepicker.adapter.DateAdapter;
+import pl.rspective.pagerdatepicker.adapter.AbsDateAdapter;
+import pl.rspective.pagerdatepicker.adapter.DefaultDateAdapter;
 import pl.rspective.pagerdatepicker.model.DateItem;
 
-public class DateRecyclerView extends RecyclerView implements ViewPager.OnPageChangeListener, DateAdapter.DateItemListener {
+public class DateRecyclerView extends RecyclerView implements ViewPager.OnPageChangeListener, DefaultDateAdapter.DateItemListener {
 
     public static interface DatePickerListener {
         void onDatePickerItemClick(DateItem dateItem, int position);
@@ -47,7 +48,7 @@ public class DateRecyclerView extends RecyclerView implements ViewPager.OnPageCh
 
     private static final String TAG = "DateRecyclerView";
 
-    private DateAdapter dateAdapter;
+    private AbsDateAdapter defaultDateAdapter;
     private DatePickerListener datePickerListener;
     private ViewPager pager;
 
@@ -73,8 +74,8 @@ public class DateRecyclerView extends RecyclerView implements ViewPager.OnPageCh
         LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
         setLayoutManager(layoutManager);
 
-        if(dateAdapter != null) {
-            setAdapter(dateAdapter);
+        if(defaultDateAdapter != null) {
+            setAdapter(defaultDateAdapter);
         }
     }
 
@@ -100,7 +101,7 @@ public class DateRecyclerView extends RecyclerView implements ViewPager.OnPageCh
         try {
             Date start = PagerDatePickerDateFormat.DATE_PICKER_DD_MM_YYYY_FORMAT.parse(dateStart);
             Date end = PagerDatePickerDateFormat.DATE_PICKER_DD_MM_YYYY_FORMAT.parse(dateEnd);
-            dateAdapter = new DateAdapter(start, end, defaultDate);
+            defaultDateAdapter = new DefaultDateAdapter(start, end, defaultDate);
         } catch (ParseException e) {
             Log.e(TAG, "The start/end date is incorrect", e);
         }
@@ -122,20 +123,20 @@ public class DateRecyclerView extends RecyclerView implements ViewPager.OnPageCh
 
     @Override
     public Adapter getAdapter() {
-        return dateAdapter;
+        return defaultDateAdapter;
     }
 
     @Override
     public void setAdapter(Adapter adapter) {
-        if(!(adapter instanceof DateAdapter)) {
+        if(!(adapter instanceof AbsDateAdapter)) {
             throw new IllegalArgumentException("Your adapter has to be a DateAdapter type");
         }
 
-        dateAdapter = (DateAdapter) adapter;
-        dateAdapter.setOnDateItemClickClistener(this);
-        super.setAdapter(dateAdapter);
+        defaultDateAdapter = (AbsDateAdapter) adapter;
+        defaultDateAdapter.setOnDateItemClickClistener(this);
+        super.setAdapter(defaultDateAdapter);
 
-        scrollToPosition(dateAdapter.getCurrentPosition());
+        scrollToPosition(defaultDateAdapter.getCurrentPosition());
     }
 
     public void setDatePickerListener(DatePickerListener datePickerListener) {
@@ -144,14 +145,15 @@ public class DateRecyclerView extends RecyclerView implements ViewPager.OnPageCh
 
     public void setPager(ViewPager pager) {
         this.pager = pager;
-        this.pager.setCurrentItem(dateAdapter.getCurrentPosition(), false);
+        this.pager.setCurrentItem(defaultDateAdapter.getCurrentPosition(), false);
 
         this.pager.setOnPageChangeListener(this);
 
     }
 
-    public @NonNull DateAdapter getDateAdapter() {
-        return dateAdapter;
+    public @NonNull
+    AbsDateAdapter getDateAdapter() {
+        return defaultDateAdapter;
     }
 
     @Override
