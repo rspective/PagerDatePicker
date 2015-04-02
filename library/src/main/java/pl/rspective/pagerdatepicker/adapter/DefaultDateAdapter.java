@@ -58,12 +58,10 @@ public class DefaultDateAdapter extends AbsDateAdapter<DefaultDateAdapter.DateIt
         dateItemHolder.itemView.setSelected(true);
 
         if (isDateSelected(dateItem)) {
-            dateItemHolder.changeDateIndicatorColor(true);
-            dateItemHolder.changeTextColor(true);
+            dateItemHolder.updateDateItemView(true);
             selectedDateView = dateItemHolder;
         } else {
-            dateItemHolder.changeDateIndicatorColor(false);
-            dateItemHolder.changeTextColor(false);
+            dateItemHolder.updateDateItemView(false);
         }
     }
 

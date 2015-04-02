@@ -38,6 +38,11 @@ public abstract class AbsDateItemHolder<T extends AbsDateAdapter> extends Recycl
         dateAdapter.onDateItemHolderClick(this);
     }
 
+    public void updateDateItemView(boolean isSelected) {
+        changeTextColor(isSelected);
+        changeDateIndicatorColor(isSelected);
+    }
+
     public abstract void changeTextColor(boolean isSelected);
 
     public abstract void setDay(Date date);
