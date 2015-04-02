@@ -27,17 +27,17 @@ Support date format MM-dd-yyyy
 ```
 
 ####Deafult and custom date adapter
-If default date item is not enough for you you can create your own custom date adapter where you can apply default style/view/functions to your date item.
+If default date item is not enough for you don't worry, you can create your own custom date adapter where you can apply default style/view/functions to your date item.
 
-Things to know:
-#####1. You have to create your custom adapter which has to extend AbsDateAdapter
-#####2. Your view holder has to extend AbsDateItemHolder
-#####3. Implement required methods and add your own if you need
+#####Things to know:
+ - You have to create your custom adapter which has to extend AbsDateAdapter
+ - Your view holder has to extend AbsDateItemHolder
+ - Implement required methods and add your own if you need
 
 To check details, please see demo app.
 
 ###Screenshot
-![image](art/app_0.0.1.gif)
+![image](art/app_1.0.0.gif)
 
 
 ###Quick Setup（Basic Usage
