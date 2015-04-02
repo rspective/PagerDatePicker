@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="accent">#0F88D8</color>
+    <color name="primary">#1976D2</color>
+    <color name="primary_dark">#0D47A1</color>
+
+    <color name="toolbar_background">#fffdfdfd</color>
+
     <color name="date_item_unselected_indicator">#ff5c5c5c</color>
     <color name="date_item_selected_indicator">#ffff7709</color>
 
