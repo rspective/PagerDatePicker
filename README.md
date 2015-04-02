@@ -1,6 +1,6 @@
 #PagerDatePicker
 
-###Version: 0.0.1
+###Version: 1.0.0
 
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
@@ -15,7 +15,6 @@ Notice that PagerDatePicker is a project under development.
 
 ####Welcome to fork and pull request.
 
-
 ###Features
 
 ####XML attributes:
@@ -27,6 +26,16 @@ Support date format MM-dd-yyyy
     <attr name="default_day_selection" format="string"/>
 ```
 
+####Deafult and custom date adapter
+If default date item is not enough for you you can create your own custom date adapter where you can apply default style/view/functions to your date item.
+
+Things to know:
+#####1. You have to create your custom adapter which has to extend AbsDateAdapter
+#####2. Your view holder has to extend AbsDateItemHolder
+#####3. Implement required methods and add your own if you need
+
+To check details, please see demo app.
+
 ###Screenshot
 ![image](art/app_0.0.1.gif)
 
@@ -34,9 +43,9 @@ Support date format MM-dd-yyyy
 ###Quick Setup（Basic Usage
 
 #####1.Integration
-TODO
+We are going to release into maven central repository.
 
-#####2.Usage
+#####2.Usage (for default date adapter)
 Please note, that supported date format is MM-dd-yyyy
 
 ######1. Add picker and pager to your view
@@ -67,10 +76,10 @@ dateList.addItemDecoration(new RecyclerViewInsetDecoration(this, R.dimen.date_ca
 ```
 Add your own insets value
 
-######3. Create adapter with date range and assign it to our picker
+######3. Create deafult adapter with date range and assign it to our picker
 
 ```java
-dateList.setAdapter(new DateAdapter(start, end));
+dateList.setAdapter(new DefaultDateAdapter(start, end));
 ```
 
 ######4. Init pager adapter and assign it to our datepicker
