@@ -114,6 +114,8 @@ dateList.setDatePickerListener(new DateRecyclerView.DatePickerListener() {
 
 ####If you want to see more details, go ahead and check the demo!
 
+###Assets
+Demo launcher icon was made by [jerrylow](https://www.iconfinder.com/jerrylow)
 
 License
 --------
