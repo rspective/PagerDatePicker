@@ -40,5 +40,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.android.support:recyclerview-v7:21.0.+'
 
-    compile project (':library')
+    compile 'pl.rspective.pagerdatepicker:pagerdatepicker:1.0.0'
+//    compile project (':library')
 }

@@ -47,7 +47,12 @@ To check details, please see demo app.
 ###Quick Setup（Basic Usage)
 
 #####1.Integration
-We are going to release into maven central repository.
+######Gradle
+```xml
+dependencies {
+    compile 'pl.rspective.pagerdatepicker:pagerdatepicker:1.0.0'
+}
+```
 
 #####2.Usage (for default date adapter)
 Please note, that supported date format is MM-dd-yyyy
