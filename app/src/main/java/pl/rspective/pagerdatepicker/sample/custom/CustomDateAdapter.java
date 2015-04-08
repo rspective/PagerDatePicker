@@ -120,9 +120,9 @@ public class CustomDateAdapter extends AbsDateAdapter<CustomDateAdapter.CustomDa
         @Override
         public void changeDateIndicatorColor(boolean isSelected) {
             if (isSelected) {
-                viewDateIndicator.setBackgroundResource(pl.rspective.pagerdatepicker.R.color.date_item_selected_indicator);
+                viewDateIndicator.setBackgroundResource(R.color.date_custom_item_selected_indicator);
             } else {
-                viewDateIndicator.setBackgroundResource(pl.rspective.pagerdatepicker.R.color.date_item_unselected_indicator);
+                viewDateIndicator.setBackgroundResource(R.color.date_custom_item_unselected_indicator);
             }
         }
 

@@ -50,7 +50,7 @@ If default date item is not enough for you don't worry, you can create your own 
 To check details, please see demo app.
 
 ###Screenshot
-![image](art/app_1.0.0.gif)
+![image](art/app_1.1.0.gif)
 
 <a href="https://play.google.com/store/apps/details?id=pl.rspective.pagerdatepicker.sample">
   <img alt="Get it on Google Play"
