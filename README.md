@@ -1,6 +1,6 @@
 #PagerDatePicker
 
-###Version: 1.0.0
+###Version: 1.1.0
 
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-PagerDatePicker-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1710)
 
@@ -26,6 +26,19 @@ Support date format MM-dd-yyyy
     <attr name="default_day_selection" format="string"/>
 ```
 
+####API
+* Animations
+You can assign animation for selected day. This could be set for whole date item view or just for single one. To achieve this you have to load and assign animation to the adapter:
+
+```java
+dateAdapter.setCurrentViewAnimation(AnimationUtils.loadAnimation(CONTEXT, ANIM_ID_FOR_YOUR_ANIMATION));
+```
+
+To select which view has to be animated you have to override below method in your ViewHolder
+```java
+protected abstract View getCurrentViewToAnimate();
+```
+
 ####Deafult and custom date adapter
 If default date item is not enough for you don't worry, you can create your own custom date adapter where you can apply default style/view/functions to your date item.
 
@@ -37,7 +50,7 @@ If default date item is not enough for you don't worry, you can create your own 
 To check details, please see demo app.
 
 ###Screenshot
-![image](art/app_1.0.0.gif)
+![image](art/app_1.1.0.gif)
 
 <a href="https://play.google.com/store/apps/details?id=pl.rspective.pagerdatepicker.sample">
   <img alt="Get it on Google Play"
@@ -50,7 +63,7 @@ To check details, please see demo app.
 ######Gradle
 ```xml
 dependencies {
-    compile 'pl.rspective.pagerdatepicker:pagerdatepicker:1.0.0'
+    compile 'pl.rspective.pagerdatepicker:pagerdatepicker:1.1.0'
 }
 ```
 

@@ -41,9 +41,15 @@ public abstract class AbsDateItemHolder<T extends AbsDateAdapter> extends Recycl
     public void updateDateItemView(boolean isSelected) {
         changeTextColor(isSelected);
         changeDateIndicatorColor(isSelected);
-    }
 
-    public abstract void changeTextColor(boolean isSelected);
+        if(dateAdapter.hasCurrentViewAnimation()) {
+            if (isSelected) {
+                getCurrentViewToAnimate().startAnimation(dateAdapter.getCurrentViewAnimation());
+            } else {
+                getCurrentViewToAnimate().clearAnimation();
+            }
+        }
+    }
 
     public abstract void setDay(Date date);
 
@@ -51,6 +57,10 @@ public abstract class AbsDateItemHolder<T extends AbsDateAdapter> extends Recycl
 
     public abstract  void setDayName(Date date);
 
-    public abstract void changeDateIndicatorColor(boolean isSelected);
+    protected abstract void changeTextColor(boolean isSelected);
+
+    protected abstract void changeDateIndicatorColor(boolean isSelected);
+
+    protected abstract View getCurrentViewToAnimate();
 
 }

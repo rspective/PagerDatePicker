@@ -17,6 +17,7 @@
 package pl.rspective.pagerdatepicker.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.animation.Animation;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,6 +37,8 @@ public abstract class AbsDateAdapter<T extends AbsDateItemHolder> extends Recycl
 
     protected long selectedDate = -1;
     protected T selectedDateView = null;
+
+    private Animation currentViewAnimation;
 
     public AbsDateAdapter(Date start, Date end) {
         this(start, end, null);
@@ -88,4 +91,15 @@ public abstract class AbsDateAdapter<T extends AbsDateItemHolder> extends Recycl
         return getPosition(selectedDate);
     }
 
+    public Animation getCurrentViewAnimation() {
+        return currentViewAnimation;
+    }
+
+    public void setCurrentViewAnimation(Animation currentViewAnimation) {
+        this.currentViewAnimation = currentViewAnimation;
+    }
+
+    public boolean hasCurrentViewAnimation() {
+        return currentViewAnimation != null;
+    }
 }

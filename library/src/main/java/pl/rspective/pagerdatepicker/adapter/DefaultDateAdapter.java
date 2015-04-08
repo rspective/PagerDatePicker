@@ -79,13 +79,8 @@ public class DefaultDateAdapter extends AbsDateAdapter<DefaultDateAdapter.DateIt
         selectedDateView = itemHolder;
         selectedDate = dateItems.get(itemHolder.getPosition()).getDate().getTime();
 
-        updateSelectedDateCard();
+        selectedDateView.updateDateItemView(true);
 
-    }
-
-    private void updateSelectedDateCard() {
-        selectedDateView.changeDateIndicatorColor(true);
-        selectedDateView.changeTextColor(true);
     }
 
     static class DateItemHolder extends AbsDateItemHolder {
@@ -111,7 +106,7 @@ public class DefaultDateAdapter extends AbsDateAdapter<DefaultDateAdapter.DateIt
         }
 
         @Override
-        public void changeTextColor(boolean isSelected) {
+        protected void changeTextColor(boolean isSelected) {
             if (isSelected) {
                 tvDay.setTextColor(resources.getColor(R.color.date_item_selected_indicator));
             } else {
@@ -135,12 +130,17 @@ public class DefaultDateAdapter extends AbsDateAdapter<DefaultDateAdapter.DateIt
         }
 
         @Override
-        public void changeDateIndicatorColor(boolean isSelected) {
+        protected void changeDateIndicatorColor(boolean isSelected) {
             if (isSelected) {
                 viewDateIndicator.setBackgroundResource(R.color.date_item_selected_indicator);
             } else {
                 viewDateIndicator.setBackgroundResource(R.color.date_item_unselected_indicator);
             }
+        }
+
+        @Override
+        protected View getCurrentViewToAnimate() {
+            return null;
         }
 
     }
