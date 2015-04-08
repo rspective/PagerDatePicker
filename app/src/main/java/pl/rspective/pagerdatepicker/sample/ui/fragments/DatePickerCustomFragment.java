@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import java.text.ParseException;
@@ -57,7 +58,8 @@ public class DatePickerCustomFragment extends Fragment {
             e.printStackTrace();
         }
 
-        dateList.setAdapter(new CustomDateAdapter(start, end, defaultDate));
+        CustomDateAdapter dateAdapter = new CustomDateAdapter(start, end, defaultDate);
+        dateList.setAdapter(dateAdapter);
 
         DatePagerFragmentAdapter fragmentAdapter = new DatePagerFragmentAdapter(getFragmentManager(), dateList.getDateAdapter()) {
             @Override
@@ -91,5 +93,7 @@ public class DatePickerCustomFragment extends Fragment {
             }
         });
 
+        // Set animation for current selected view
+        dateAdapter.setCurrentViewAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.blinking_animation));
     }
 }

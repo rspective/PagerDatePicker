@@ -125,6 +125,11 @@ public class CustomDateAdapter extends AbsDateAdapter<CustomDateAdapter.CustomDa
                 viewDateIndicator.setBackgroundResource(pl.rspective.pagerdatepicker.R.color.date_item_unselected_indicator);
             }
         }
+
+        @Override
+        protected View getCurrentViewToAnimate() {
+            return tvDay;
+        }
     }
 
 }
