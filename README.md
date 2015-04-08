@@ -2,7 +2,7 @@
 
 ###Version: 1.0.0
 
-[![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-PagerDatePicker-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1710)
 
 ###Description
 PagerDatePicker is a library for Android which allows to setup horizontal (for now;)) date list picker. It is a combination of few main Android components:
