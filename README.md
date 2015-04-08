@@ -1,6 +1,6 @@
 #PagerDatePicker
 
-###Version: 1.0.0
+###Version: 1.1.0
 
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
@@ -24,6 +24,19 @@ Support date format MM-dd-yyyy
     <attr name="date_start" format="string"/>
     <attr name="date_end" format="string"/>
     <attr name="default_day_selection" format="string"/>
+```
+
+####API
+* Animations
+You can assign animation for selected day. This could be set for whole date item view or just for single one. To achieve this you have to load and assign animation to the adapter:
+
+```java
+dateAdapter.setCurrentViewAnimation(AnimationUtils.loadAnimation(CONTEXT, ANIM_ID_FOR_YOUR_ANIMATION));
+```
+
+To select which view has to be animated you have to override below method in your ViewHolder
+```java
+protected abstract View getCurrentViewToAnimate();
 ```
 
 ####Deafult and custom date adapter
