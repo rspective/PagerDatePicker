@@ -63,7 +63,7 @@ To check details, please see demo app.
 ######Gradle
 ```xml
 dependencies {
-    compile 'pl.rspective.pagerdatepicker:pagerdatepicker:1.0.0'
+    compile 'pl.rspective.pagerdatepicker:pagerdatepicker:1.1.0'
 }
 ```
 
