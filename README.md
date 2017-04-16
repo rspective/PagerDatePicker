@@ -1,10 +1,10 @@
-#PagerDatePicker
+# PagerDatePicker
 
-###Version: 1.2.0
+### Version: 1.2.0
 
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-PagerDatePicker-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1710)
 
-###Description
+### Description
 PagerDatePicker is a library for Android which allows to setup horizontal (for now;)) date list picker. It is a combination of few main Android components:
 * android.support.v7.widget.RecyclerView
 * android.support.v4.view.ViewPager
@@ -13,11 +13,11 @@ PagerDatePicker is a library for Android which allows to setup horizontal (for n
 
 Notice that PagerDatePicker is a project under development.
 
-####Welcome to fork and pull request.
+#### Welcome to fork and pull request.
 
-###Features
+### Features
 
-####XML attributes:
+#### XML attributes:
 Support date format MM-dd-yyyy
 
 ```xml
@@ -26,7 +26,7 @@ Support date format MM-dd-yyyy
     <attr name="default_day_selection" format="string"/>
 ```
 
-####API
+#### API
 * Animations
 You can assign animation for selected day. This could be set for whole date item view or just for single one. To achieve this you have to load and assign animation to the adapter:
 
@@ -39,17 +39,17 @@ To select which view has to be animated you have to override below method in you
 protected abstract View getCurrentViewToAnimate();
 ```
 
-####Deafult and custom date adapter
+#### Deafult and custom date adapter
 If default date item is not enough for you don't worry, you can create your own custom date adapter where you can apply default style/view/functions to your date item.
 
-#####Things to know:
+##### Things to know:
  - You have to create your custom adapter which has to extend AbsDateAdapter
  - Your view holder has to extend AbsDateItemHolder
  - Implement required methods and add your own if you need
 
 To check details, please see demo app.
 
-###Screenshot
+### Screenshot
 ![image](art/app_1.1.0.gif)
 
 <a href="https://play.google.com/store/apps/details?id=pl.rspective.pagerdatepicker.sample">
@@ -57,20 +57,20 @@ To check details, please see demo app.
        src="https://developer.android.com/images/brand/pl_generic_rgb_wo_60.png" />
 </a>
 
-###Quick Setup（Basic Usage)
+### Quick Setup（Basic Usage)
 
-#####1.Integration
-######Gradle
+##### 1.Integration
+###### Gradle
 ```xml
 dependencies {
     compile 'pl.rspective.pagerdatepicker:pagerdatepicker:1.2.0'
 }
 ```
 
-#####2.Usage (for default date adapter)
+##### 2.Usage (for default date adapter)
 Please note, that supported date format is MM-dd-yyyy
 
-######1. Add picker and pager to your view
+###### 1. Add picker and pager to your view
 ```xml
 <pl.rspective.pagerdatepicker.view.DateRecyclerView
     android:id="@+id/date_list"
@@ -85,7 +85,7 @@ Please note, that supported date format is MM-dd-yyyy
    android:layout_below="@id/date_list"/>
 ```
 
-######2. Add item decoration for your picker (OPTIONAL)
+###### 2. Add item decoration for your picker (OPTIONAL)
 
 You can do this in two ways:
 ```java
@@ -98,13 +98,13 @@ dateList.addItemDecoration(new RecyclerViewInsetDecoration(this, R.dimen.date_ca
 ```
 Add your own insets value
 
-######3. Create deafult adapter with date range and assign it to our picker
+###### 3. Create deafult adapter with date range and assign it to our picker
 
 ```java
 dateList.setAdapter(new DefaultDateAdapter(start, end));
 ```
 
-######4. Init pager adapter and assign it to our datepicker
+###### 4. Init pager adapter and assign it to our datepicker
 
 ```java
 DatePagerFragmentAdapter fragmentAdapter = new DatePagerFragmentAdapter(getSupportFragmentManager(), dateList.getDateAdapter()) {
@@ -118,7 +118,7 @@ pager.setAdapter(fragmentAdapter);
 dateList.setPager(pager);
 ```
 
-######5. We are almost there. Now you have to assign a listener to your picker
+###### 5. We are almost there. Now you have to assign a listener to your picker
 ```java
 dateList.setDatePickerListener(new DateRecyclerView.DatePickerListener() {
     @Override
@@ -154,9 +154,9 @@ If you want to change the default color, just override below colors in your colo
 <color name="date_item_day">#FFFFFFFF</color>
 ```
 
-####If you want to see more details, go ahead and check the demo!
+#### If you want to see more details, go ahead and check the demo!
 
-###Assets
+### Assets
 Demo launcher icon was made by [jerrylow](https://www.iconfinder.com/jerrylow)
 
 License
