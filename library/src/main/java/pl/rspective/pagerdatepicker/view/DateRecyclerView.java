@@ -182,7 +182,9 @@ public class DateRecyclerView extends RecyclerView implements ViewPager.OnPageCh
 
     @Override
     public void onDateItemClick(DateItem dateItem, int position) {
-        pager.setCurrentItem(position, true);
+        if (pager != null) {
+            pager.setCurrentItem(position, true);
+        }
 
         if(datePickerListener != null) {
             datePickerListener.onDatePickerItemClick(dateItem, position);
